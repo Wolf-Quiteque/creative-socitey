@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Paleta quente: creme, areia, cacau, terracota e rosa antigo */
+:root {
+  --bg: #fbf7f2;
+  --surface: #fffdfa;
+  --sand: #f4ede4;
+  --sand-strong: #ebe0d3;
+  --line: #e8ddd0;
+  --ink: #3b2a22;
+  --ink-soft: #5c4639;
+  --muted: #8a7465;
+  --primary: #b4593c;
+  --primary-strong: #9a4930;
+  --on-primary: #fff8f3;
+  --primary-soft: #f6e3d9;
+  --rose: #c07f7f;
+  --rose-soft: #f5e4e2;
+  --success: #4f7d5c;
+  --success-soft: #e2ede4;
+  --warning: #b07418;
+  --warning-soft: #f8ebd3;
+  --danger: #b0413e;
+  --danger-soft: #f6dedb;
+  --info: #56708a;
+  --info-soft: #e3eaf1;
+  /* Cores de gráficos validadas (daltonismo e contraste) com o validador do skill dataviz */
+  --chart-1: #c2532c;
+  --chart-2: #2a78d6;
+  --chart-grid: #eee6dc;
+  --shadow-color: 59 42 34;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #1b1411;
+  --surface: #241b17;
+  --sand: #2d231e;
+  --sand-strong: #3a2d27;
+  --line: #3d302a;
+  --ink: #f3e9e0;
+  --ink-soft: #ddcabd;
+  --muted: #ae9b8d;
+  --primary: #e08a68;
+  --primary-strong: #eba184;
+  --on-primary: #2a140b;
+  --primary-soft: #3d2419;
+  --rose: #dfa3a3;
+  --rose-soft: #3b2526;
+  --success: #8fbf9b;
+  --success-soft: #1f3125;
+  --warning: #e3b05e;
+  --warning-soft: #3a2c14;
+  --danger: #ec8a85;
+  --danger-soft: #3d1f1d;
+  --info: #9db6cf;
+  --info-soft: #1f2b37;
+  --chart-1: #d95926;
+  --chart-2: #3987e5;
+  --chart-grid: #342823;
+  --shadow-color: 0 0 0;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-sand: var(--sand);
+  --color-sand-strong: var(--sand-strong);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-on-primary: var(--on-primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-grid: var(--chart-grid);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --shadow-soft: 0 1px 2px rgb(var(--shadow-color) / 0.04), 0 10px 30px -14px rgb(var(--shadow-color) / 0.16);
+  --shadow-lift: 0 2px 4px rgb(var(--shadow-color) / 0.05), 0 18px 40px -16px rgb(var(--shadow-color) / 0.25);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+  }
+  ::selection {
+    background: var(--primary-soft);
+  }
+  /* Evita o zoom automático do iOS ao focar campos */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    input,
+    select,
+    textarea {
+      font-size: 15px;
+    }
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pop-in {
+  from {
+    transform: translate(-50%, -48%) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.animate-sheet-up {
+  animation: sheet-up 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.animate-fade-in {
+  animation: fade-in 180ms ease-out;
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+@media (min-width: 768px) {
+  .md\:animate-pop-in {
+    animation: pop-in 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Impressão: só o documento (talões e notas) */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

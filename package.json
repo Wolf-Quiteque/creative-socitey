@@ -1,0 +1,43 @@
+{
+  "name": "creative-society",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx --conditions=react-server --env-file=.env scripts/seed.ts",
+    "seed:demo": "tsx --conditions=react-server --env-file=.env scripts/seed.ts --demo",
+    "smoke": "tsx --conditions=react-server --env-file=.env scripts/smoke.ts",
+    "pwa:assets": "node scripts/pwa-assets.mjs"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jose": "^6.2.13",
+    "lucide-react": "^1.63.0",
+    "mongodb": "^7.7.0",
+    "next": "^16.4.3",
+    "next-themes": "^0.4.6",
+    "radix-ui": "^1.8.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "recharts": "^3.10.1",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3"
+  }
+}
